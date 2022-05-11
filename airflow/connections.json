@@ -1,0 +1,21 @@
+{
+	"minio": {
+		"conn_type": "Amazon S3",
+		"host": "minio",
+		"login": "dnQrKxjTPQd3gmop",
+		"password": "fc7Xml13XmAM97Sb7KzMGpZIcUkOOpS5",
+		"port": 9000
+	},
+	"riot_api": {
+		"conn_type": "HTTP",
+		"password": "RGAPI-b3f9151d-075e-4d42-a31c-ec7d4010414b"
+	},
+	"db": {
+		"conn_type": "Postgres",
+		"host": "postgres",
+		"login": "lolstats",
+		"password": "lolstats",
+		"port": 5432,
+		"schema": "lolstats"
+	}
+}

@@ -1,0 +1,15 @@
+{
+    "lolstats_db_conn_id": "db",
+    "lolstats_db_etl_dag_id": "lolstats_db_etl",
+    "lolstats_db_etl_object_path_variable": "object_paths",
+    "lolstats_db_etl_player_data_variable": "player_data",
+    "lolstats_match_api_base_url": "https://europe.api.riotgames.com/lol/match/v5/matches/{matchId}",
+    "lolstats_matches_api_base_url": "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?startTime={startTime}&endTime={endTime}&start={start}&count={count}",
+    "lolstats_minio_bucket_name": "lolstats",
+    "lolstats_minio_conn_id": "minio",
+    "lolstats_players": [
+        "Pasargadae"
+    ],
+    "lolstats_riot_api_conn_id": "riot_api",
+    "lolstats_summoner_api_base_url": "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{player}"
+}

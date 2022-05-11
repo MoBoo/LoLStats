@@ -1,0 +1,7 @@
+.env
+.idea
+venv
+minio/data
+__pycache__
+airflow/logs/*
+!airflow/logs/.gitkeep

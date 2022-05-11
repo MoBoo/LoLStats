@@ -1,0 +1,43 @@
+#!/bin/bash
+
+export "AIRFLOW_UID=$(id -u)"
+
+check_status()
+{
+  local -r delay='5'
+  local spinstr='\|/-'
+  local temp
+
+  services_up=$(docker-compose ps | grep "(healthy)" | wc -l)
+  while [[ "${services_up}" -ne "8" ]]
+  do
+    printf "${services_up} / 8 healthy ..."
+    sleep "${delay}"
+    printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+    services_up=$(docker-compose ps | grep "(healthy)" | wc -l)
+  done
+}
+
+echo "Starting your airflow services..."
+echo "This might take a while..."
+
+docker-compose --env-file ./.env up airflow-init
+docker-compose --env-file ./.env up -d
+
+echo ""
+echo "lolstats environment started, waiting for all services to be ready...."
+
+check_status
+
+echo ""
+echo "Airflow server is now ready to use and available with"
+echo "You can access the Airflow Webserver at: http://localhost:8080/"
+echo "username: airflow"
+echo "password: ${AIRFLOW_PASSWORD:-airflow}"
+echo ""
+echo "MinIO Console is accessable at: http://localhost:9001/"
+echo "username: ${MINIO_ROOT_USER:-minio}"
+echo "password: ${MINIO_ROOT_PASSWORD:-minio123}"
+echo ""
+
+exit 0
