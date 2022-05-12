@@ -87,7 +87,7 @@ services:
      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio123}
    volumes:
-     - ./minio/data:/data
+     - minio-volume:/data
 
   airflow-webserver:
     <<: *airflow-common
@@ -263,3 +263,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  minio-volume:
