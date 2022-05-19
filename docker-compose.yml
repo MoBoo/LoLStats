@@ -59,6 +59,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin123}
     ports:
       - "8081:80"
+    volumes:
+      - pgadmin-volume:/var/lib/pgadmin
 
   redis:
     image: redis:latest
@@ -264,3 +266,4 @@ services:
 volumes:
   postgres-db-volume:
   minio-volume:
+  pgadmin-volume:
