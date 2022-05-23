@@ -7,9 +7,14 @@ from airflow.decorators import dag, task
 from airflow.hooks.base import BaseHook
 from airflow.models import Variable
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+from airflow.operators.python import get_current_context
 
 from minio import Minio
 from minio.error import MinioException
+
+#context = get_current_context()
+# START_TIME = pendulum.from_format(context["dag_run"].conf["start_time"], "YYYY-MM-DD") or pendulum.now("UTC").replace(hour=0, minute=0, second=0, microsecond=0).subtract(days=1)
+# END_TIME = START_TIME.add(hours=23, minutes=59, seconds=59, microseconds=999)
 
 START_TIME = pendulum.now("UTC").replace(hour=0, minute=0, second=0, microsecond=0).subtract(days=1)
 END_TIME = START_TIME.add(hours=23, minutes=59, seconds=59, microseconds=999)
